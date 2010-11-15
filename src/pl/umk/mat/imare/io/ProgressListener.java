@@ -27,8 +27,14 @@ public interface ProgressListener {
 	public void jobProgress(Object sender, float progress);
 
 	/**
-	 * Informuje słuchacza o zakończeniu pracy.
+	 * Informuje słuchacza o pomyślnym zakończeniu pracy.
 	 * @param sender Obiekt wykonujący pracę.
 	 */
 	public void jobFinished(Object sender);
+
+        /**
+         * Informuje słuchacza o niepowodzeniu.
+	 * @param sender Obiekt wykonujący pracę.
+         */
+        public void jobFailed(Object sender, final String message);
 }
