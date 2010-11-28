@@ -30,6 +30,7 @@ public class Wave {
 
     public static final int MAX_BIT = 16;
     public static final int MAX_VAL = 32768;
+    public final String filename;
 
     /**
      * Otwiera plik do odczytu
@@ -47,7 +48,7 @@ public class Wave {
         String s = file.getName();
         if (s.toLowerCase().endsWith(".mp3")) {
             /* otwierany plik to mp3 */
-            MP3Loader wave = new MP3Loader();
+            MP3Loader wave = new MP3Loader(s);
             wave.addListener(progressListener);
             wave.file = file;
             wave.load2(new FileInputStream(file));
@@ -65,7 +66,7 @@ public class Wave {
                 throw new UnsupportedAudioFileException();
             }
 
-            Wave wave = new Wave();
+            Wave wave = new Wave(s);
             wave.addListener(progressListener);
             wave.file = file;
             wave.format = format;
@@ -74,6 +75,9 @@ public class Wave {
         }
     }
 
+    public Wave(String filename) {
+      this.filename = filename;
+    }
 
     /**
      * Metoda ladujaca plik. Laduje CALY plik do pamieci.

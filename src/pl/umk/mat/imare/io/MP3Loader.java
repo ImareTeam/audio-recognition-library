@@ -27,6 +27,10 @@ import pl.umk.mat.imare.exception.FileDoesNotExistException;
  */
 public class MP3Loader extends Wave {
 
+  public MP3Loader(String filename) {
+    super(filename);
+  }
+
 	protected Point countFrames(InputStream in) {
 		Bitstream stream = new Bitstream(in);
 		Point p = new Point();
