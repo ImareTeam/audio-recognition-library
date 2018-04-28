@@ -1,5 +1,5 @@
-
 apply plugin: 'java'
+apply plugin: 'maven-publish'
 
 repositories {
   mavenCentral()
@@ -7,4 +7,16 @@ repositories {
 
 dependencies {
   compile group: 'javazoom', name: 'jlayer', version: '1.0.1' 
+}
+
+publishing {
+  publications {
+    maven(MavenPublication) {
+      artifactId 'audio-recognition-library'
+      groupId 'pl.umk.mat.imare'
+      version '1.0.0'
+
+      from components.java
+    }
+  }
 }
